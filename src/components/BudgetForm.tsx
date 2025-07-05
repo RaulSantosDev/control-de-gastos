@@ -1,11 +1,9 @@
 import { useState, useMemo } from "react"
 import type { BudgetActions } from "../reducers/budget-reducer"
 
-type BudgetFormProps = {
-    dispatch: React.ActionDispatch<[action: BudgetActions]>
-}
 
-export default function BudgetForm( {dispatch} : BudgetFormProps) {
+
+export default function BudgetForm( ) {
 
     const [ budget, setBudget ] = useState(0)
 
@@ -41,7 +39,7 @@ export default function BudgetForm( {dispatch} : BudgetFormProps) {
                 value="Definir Presupuesto"
                 className=" bg-blue-700 hover:bg-blue-600 cursor-pointer text-white p-2 rounded-lg w-full font-black uppercase disabled:opacity-50"
                 disabled={isValid} 
-                onClick={() => dispatch({type: "add-budget", payload: {budget}})}
+               
             />
 
         </form>
