@@ -17,9 +17,7 @@ export const BudgetReducer = (
         action: BudgetActions,
     ) => {
 
-    if( action.type === "add-budget"){
-        console.log("Desde Budgetreducer")
-        return {
+    if( action.type === "add-budget"){        return {
             ...state,
             budget: action.payload.budget
         }
