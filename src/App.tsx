@@ -1,7 +1,7 @@
 import { useMemo } from "react"
 import BudgetForm from "./components/BudgetForm"
 import { useBudget } from "./hooks/useBudget"
-import BudgetTracker from "./components/budgetTracker"
+import BudgetTracker from "./components/BudgetTracker"
 
 function App() {
 
