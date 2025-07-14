@@ -7,7 +7,7 @@ function App() {
 
   const { state } = useBudget()
   
-  const isValidBudget = useMemo( () => state?.budget > 0 , [state?.budget])
+  const isValidBudget = useMemo( () => state.budget > 0 , [state.budget])
 
 
   return (

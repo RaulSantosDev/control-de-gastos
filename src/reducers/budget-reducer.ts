@@ -5,7 +5,7 @@ export type BudgetActions =
 
 
 export type BudgetState = {
-    budget: number
+    budget: number 
 }
 
 export const initialState : BudgetState = {
@@ -24,5 +24,5 @@ export const BudgetReducer = (
 
         
     }
-
+    return state
 }
