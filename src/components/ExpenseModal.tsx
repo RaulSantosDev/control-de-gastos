@@ -2,7 +2,6 @@ import { Fragment } from 'react'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { Dialog, Transition } from '@headlessui/react'
 import { useBudget } from '../hooks/useBudget'
-import { initialState } from '../reducers/budget-reducer'
 
 export default function ExpenseModal() {
 
@@ -20,7 +19,7 @@ export default function ExpenseModal() {
       </div>
 
       <Transition appear show={state.modal} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={() => {}}>
+        <Dialog as="div" className="relative z-10" onClose={() => dispatch( { type: "close-modal"})}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
