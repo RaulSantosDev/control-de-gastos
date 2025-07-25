@@ -12,7 +12,7 @@ export type BudgetState = {
 }
 
 export const initialState : BudgetState = {
-    budget: 1,
+    budget: 0,
     modal: false
 }
 
