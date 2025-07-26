@@ -6,7 +6,7 @@ type ErrorMessageProps = {
 
 export default function ErrorMessage({children} : ErrorMessageProps) {
   return (
-    <div className="bg-red-600 font-bold uppercase text-center text-sm text-white p-2">
+    <div className="bg-red-600 font-bold uppercase text-center text-sm text-white p-2 rounded-sm">
       {children}
     </div>
   )

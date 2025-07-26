@@ -5,7 +5,7 @@ import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
 import type { DrafExpense, Value } from "../types";
 import ErrorMessage from "./ErrorMessage";
-
+import { useBudget } from "../hooks/useBudget";
 
 
 export default function ExpenseForm() {
@@ -18,6 +18,8 @@ export default function ExpenseForm() {
   })
 
   const [error, setError] = useState('')
+
+  const { dispatch } = useBudget()
 
   const handleChange = (e : React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> ) => {
     const { name, value } = e.target
@@ -43,7 +45,8 @@ export default function ExpenseForm() {
       return
     }
 
-    console.log("Todo bien")
+    dispatch({type: "add-expense", payload: { expense }})
+
   }
   return (
     <form className="space-y-5" onSubmit={handelSubmit}>
