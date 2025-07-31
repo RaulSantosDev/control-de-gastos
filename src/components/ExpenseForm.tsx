@@ -47,7 +47,15 @@ export default function ExpenseForm() {
 
     dispatch({type: "add-expense", payload: { expense }})
 
+    setExpense({
+      amount: 0,
+      expenseName: '',
+      category: '',
+      date: new Date()
+    })
+
   }
+  
   return (
     <form className="space-y-5" onSubmit={handelSubmit}>
       <legend
@@ -92,7 +100,7 @@ export default function ExpenseForm() {
           placeholder="Ingresa la cantidad del gasto: ej. 300"
           className="bg-slate-100 p-2"
           name="amount"
-          // value={expense.amount}
+          value={expense.amount}
           onChange={handleChange}
         />
 
@@ -111,6 +119,7 @@ export default function ExpenseForm() {
           className="bg-slate-100 p-2"
           name="category"
           onChange={handleChange}
+          value={expense.category}
           
           
         >

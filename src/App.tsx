@@ -6,7 +6,7 @@ import ExpenseModal from "./components/ExpenseModal"
 
 function App() {
 
-  const { state } = useBudget()
+  const { state} = useBudget()
   
   const isValidBudget = useMemo( () => state.budget > 0 , [state.budget])
 
