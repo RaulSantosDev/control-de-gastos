@@ -10,12 +10,15 @@ import { useBudget } from "../hooks/useBudget";
 
 export default function ExpenseForm() {
 
-  const [ expense, setExpense] = useState<DrafExpense>({
+  const initialState = {
     amount: 0,
     expenseName: '',
     category: '',
     date: new Date()
-  })
+  }
+
+  const [ expense, setExpense] = useState<DrafExpense>(initialState)
+
 
   const [error, setError] = useState('')
 
@@ -47,12 +50,7 @@ export default function ExpenseForm() {
 
     dispatch({type: "add-expense", payload: { expense }})
 
-    setExpense({
-      amount: 0,
-      expenseName: '',
-      category: '',
-      date: new Date()
-    })
+    setExpense(initialState)
 
   }
   
@@ -154,11 +152,10 @@ export default function ExpenseForm() {
 
       <input 
         type="submit" 
-        className="bg-blue-600 cursor-pointer w-full p-2 text-white uppercase font-bold rounded-sm" value={'Registrar Gasto'}
+        className="bg-blue-600 cursor-pointer w-full p-2 text-white uppercase font-bold rounded-sm" 
+        value={'Registrar Gasto'}
       
-      />          
-
-      
+      />   
 
       
     </form>

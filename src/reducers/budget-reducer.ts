@@ -7,8 +7,6 @@ export type BudgetActions =
     { type: 'close-modal'} |
     { type: 'add-expense', payload: {expense: DrafExpense}}
 
-
-
 export type BudgetState = {
     budget: number 
     modal: boolean
@@ -60,7 +58,7 @@ export const BudgetReducer = (
         return{
             ...state, 
             expenses: [...state.expenses, expense],
-            modal: false
+             modal: false
         }
     }
     

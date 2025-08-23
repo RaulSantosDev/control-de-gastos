@@ -1,6 +1,12 @@
+
 import AmountDisplay from "./AmountDisplay";
 
-export default function BudgetTracker() {
+export default function BudgetTracker() { 
+
+  const handleChange = () => {
+    window.location.reload()
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div className="flex justify-center">
@@ -11,13 +17,14 @@ export default function BudgetTracker() {
         <button
             type="button"
             className="bg-pink-600 w-full p-2 text-white uppercase font-bold rounded-sm cursor-pointer"
+            onClick={handleChange}
         >
             Resetear App
         </button>
 
             < AmountDisplay 
-            label="Presupuesto"
-            amount={300}
+              label="Presupuesto"
+              amount={300}
             />
             < AmountDisplay 
                 label="Disponible"
