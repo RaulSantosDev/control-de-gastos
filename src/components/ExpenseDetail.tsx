@@ -18,7 +18,7 @@ type ExpenseDetailProops = {
 }
 
 export default function ExpenseDetail({expense} : ExpenseDetailProops) {
-  const { dispatch } = useBudget() 
+  const { dispatch } = useBudget()  
 
   const categoryInfo = useMemo(()=> categories.filter( category => category.id === expense.category)[0] ,[expense])
 

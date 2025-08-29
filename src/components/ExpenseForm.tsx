@@ -2,7 +2,7 @@ import { categories } from "../data/data"
 import DatePicker from 'react-date-picker'
 import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { DrafExpense, Value } from "../types";
 import ErrorMessage from "./ErrorMessage";
 import { useBudget } from "../hooks/useBudget";
@@ -17,12 +17,22 @@ export default function ExpenseForm() {
     date: new Date()
   }
 
-  const [ expense, setExpense] = useState<DrafExpense>(initialState)
-
+  const [ expense, setExpense] = useState<DrafExpense>(initialState)  
 
   const [error, setError] = useState('')
 
-  const { dispatch } = useBudget()
+  const { dispatch, state } = useBudget()
+
+  useEffect( () => {
+  
+      if (state.editingId){
+        const editingExpence = state.expenses.filter( currentExpense => currentExpense.id === state.editingId)[0]
+        setExpense(
+          editingExpence
+        )
+      } 
+  
+   }, [state.editingId])
 
   const handleChange = (e : React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> ) => {
     const { name, value } = e.target
