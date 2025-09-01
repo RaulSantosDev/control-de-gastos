@@ -1,14 +1,21 @@
 
 import AmountDisplay from "./AmountDisplay";
 import { useBudget } from "../hooks/useBudget";
+import { useMemo } from "react";
 
 export default function BudgetTracker() { 
 
-  const  {dispatch} = useBudget()
+  const  {state, dispatch} = useBudget()
 
   const handleChange = () => {
     dispatch({type: 'clean-cart'})
   }
+
+  const totalExpenses = useMemo( () => state.expenses.reduce((total , expense) => total + expense.amount, 0),[state.expenses])
+
+  let amountAvailable = useMemo( () => state.budget - totalExpenses, [state.expenses])
+
+
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -27,15 +34,15 @@ export default function BudgetTracker() {
 
             < AmountDisplay 
               label="Presupuesto"
-              amount={300}
+              amount={state.budget}
             />
             < AmountDisplay 
                 label="Disponible"
-                amount={200}
+                amount={amountAvailable}
             />
             < AmountDisplay 
                 label="Gastado"
-                amount={100}
+                amount={totalExpenses}
             />
       
       </div>
