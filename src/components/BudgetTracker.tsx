@@ -1,10 +1,13 @@
 
 import AmountDisplay from "./AmountDisplay";
+import { useBudget } from "../hooks/useBudget";
 
 export default function BudgetTracker() { 
 
+  const  {dispatch} = useBudget()
+
   const handleChange = () => {
-    window.location.reload()
+    dispatch({type: 'clean-cart'})
   }
 
   return (

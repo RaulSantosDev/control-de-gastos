@@ -8,7 +8,8 @@ export type BudgetActions =
     { type: 'add-expense', payload: {expense: DrafExpense}} |
     { type: 'remove-expense', payload: {id: Expense['id']}} |
     { type: 'get-expense-by-id', payload: {id: Expense['id']}} |
-    { type: 'update-expense', payload: { expense: Expense } }
+    { type: 'update-expense', payload: { expense: Expense } } |
+    { type: 'clean-cart'}
 
 
 export type BudgetState = {
@@ -101,6 +102,15 @@ export const BudgetReducer = (
             ...state, 
             expenses: state.expenses.map( expense => expense.id === action.payload.expense.id ? action.payload.expense : expense),
             modal: false,
+            editingId: ''
+        }
+    }
+
+    if ( action.type === 'clean-cart') {
+        return {
+            budget: 0,
+            modal: false,
+            expenses: [],
             editingId: ''
         }
     }
