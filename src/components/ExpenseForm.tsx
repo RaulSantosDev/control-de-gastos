@@ -7,7 +7,6 @@ import type { DrafExpense, Value } from "../types";
 import ErrorMessage from "./ErrorMessage";
 import { useBudget } from "../hooks/useBudget";
 
-
 export default function ExpenseForm() {
 
   const initialState = {
@@ -21,7 +20,9 @@ export default function ExpenseForm() {
 
   const [error, setError] = useState('')
 
-  const { dispatch, state } = useBudget()
+  const { dispatch, state , amountAvailable} = useBudget()
+
+  const [previousAmount, setPreviousAmount] = useState(0)
 
   useEffect( () => {
   
@@ -30,6 +31,7 @@ export default function ExpenseForm() {
         setExpense(
           editingExpence
         )
+        setPreviousAmount(editingExpence.amount)
       } 
   
    }, [state.editingId])
@@ -58,6 +60,13 @@ export default function ExpenseForm() {
       return
     }
 
+    //Validar que no me pase del presupuesto
+    if((expense.amount - previousAmount) > amountAvailable){
+      setError('Límite excedido')
+      return
+    }
+
+    //Agregar o actulaizar el gasto
     if (state.editingId){
       dispatch({type: 'update-expense', payload: {expense: {id: state.editingId, ...expense}} })
     } else {
@@ -65,7 +74,6 @@ export default function ExpenseForm() {
       dispatch({type: "add-expense", payload: { expense }})      
 
     }
-
 
     setExpense(initialState)
 
