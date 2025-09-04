@@ -2,7 +2,7 @@ import { v4 as uuidv4} from 'uuid'
 import type { DrafExpense, Expense } from "../types"
 
 export type BudgetActions = 
-    { type: "add-budget", payload: {budget: number} } | 
+    { type: "add-budget", payload: {budgeta: number} } | 
     { type: 'show-modal'} |
     { type: 'close-modal'} |
     { type: 'add-expense', payload: {expense: DrafExpense}} |
@@ -51,7 +51,7 @@ export const BudgetReducer = (
     if( action.type === "add-budget"){        
         return {
             ...state,
-            budget: action.payload.budget
+            budget: action.payload.budgeta
         }        
     }
 

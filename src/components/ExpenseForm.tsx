@@ -123,7 +123,7 @@ export default function ExpenseForm() {
           placeholder="Ingresa la cantidad del gasto: ej. 300"
           className="bg-slate-100 p-2"
           name="amount"
-          value={expense.amount}
+          value={expense.amount === 0 ? "" : expense.amount}
           onChange={handleChange}
         />
 
